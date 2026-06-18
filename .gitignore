@@ -4,7 +4,6 @@ node_modules/
 # ─── Build (GitHub Actions lo genera, no se sube) ────────────────────────────
 dist/
 dist-ssr/
-obj/
 
 # ─── Variables de entorno (nunca al repo) ────────────────────────────────────
 .env
@@ -19,19 +18,15 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# ─── Visual Studio ───────────────────────────────────────────────────────────
-*.slnx
-*.sln
-*.esproj
-*.suo
-*.ntvs*
-*.njsproj
-.vs/
-
 # ─── Editor ──────────────────────────────────────────────────────────────────
 .vscode/*
 !.vscode/extensions.json
 .idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.esproj
+*.sln
 *.sw?
 
 # ─── SO ──────────────────────────────────────────────────────────────────────

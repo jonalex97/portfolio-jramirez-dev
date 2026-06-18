@@ -26,20 +26,23 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: portfolio-jramirez-dev/package-lock.json
 
       - name: Install dependencies
         run: npm ci
-        working-directory: portfolio-jramirez-dev
 
       - name: Build
         run: npm run build
-        working-directory: portfolio-jramirez-dev
+        env:
+          VITE_EMAILJS_SERVICE_ID: ${{ secrets.VITE_EMAILJS_SERVICE_ID }}
+          VITE_EMAILJS_TEMPLATE_ID: ${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}
+          VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}
+          VITE_PHONE: ${{ secrets.VITE_PHONE }}
+          VITE_PHONE_DISPLAY: ${{ secrets.VITE_PHONE_DISPLAY }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: portfolio-jramirez-dev/dist
+          path: dist
 
   deploy:
     needs: build
