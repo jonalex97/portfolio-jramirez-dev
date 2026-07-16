@@ -32,7 +32,7 @@ function CopyField({ label, value }) {
 }
 
 function FeaturedProject({ project }) {
-  const { title, tagline, description, tech, highlights, demo, github, architecture, credentials } = project;
+  const { title, tagline, description, tech, highlights, demo, github, credentials } = project;
 
   return (
     <article className="project-featured">
@@ -77,11 +77,6 @@ function FeaturedProject({ project }) {
         {demo && (
           <a className="btn btn--primary btn--small" href={demo} target="_blank" rel="noopener noreferrer">
             Probar demo →
-          </a>
-        )}
-        {architecture && (
-          <a className="btn btn--secondary btn--small" href={architecture} target="_blank" rel="noopener noreferrer">
-            Ver arquitectura
           </a>
         )}
         {github && (

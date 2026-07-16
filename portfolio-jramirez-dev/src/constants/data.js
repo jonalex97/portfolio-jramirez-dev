@@ -94,7 +94,6 @@ export const PROJECTS = [
     ],
     demo: 'https://nexasuite.vercel.app',
     github: 'https://github.com/jonalex97/nexasuite',
-    architecture: 'https://claude.ai/code/artifact/88afc3de-3bb9-419e-b3f1-90d6d78605ff',
     // Credenciales públicas del entorno de demostración (rol limitado, datos que se reinician a diario).
     credentials: { email: 'demo@nexasuite.io', password: 'Demo1234$' },
     status: 'demo',
