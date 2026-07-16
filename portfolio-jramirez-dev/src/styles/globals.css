@@ -1,13 +1,17 @@
 :root {
-  --color-bg: #0a0a0f;
-  --color-surface: #13131a;
-  --color-border: #1e1e2e;
-  --color-primary: #7c3aed;
-  --color-primary-hover: #6d28d9;
-  --color-accent: #06b6d4;
-  --color-text: #e2e8f0;
-  --color-muted: #94a3b8;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  /* Neutrals with a subtle cool bias — read as chosen, not default black. */
+  --color-bg: #0b0c0f;
+  --color-surface: #131519;
+  --color-elevated: #1a1d23;
+  --color-border: #23262e;
+  /* A single restrained accent (soft azure) replaces the old purple + cyan pair,
+     used sparingly so the page reads calm and senior. */
+  --color-primary: #7aa2f7;
+  --color-primary-hover: #6690f0;
+  --color-accent: #7aa2f7;
+  --color-text: #e7e9ee;
+  --color-muted: #98a0ae;
+  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, 'SF Mono', monospace;
   --radius: 8px;
   --max-width: 1100px;
   --transition: 0.2s ease;
@@ -35,10 +39,10 @@ body {
 .section__title::after {
   content: '';
   display: block;
-  width: 50%;
-  height: 3px;
+  width: 44px;
+  height: 2px;
   background: var(--color-primary);
-  margin-top: 0.4rem;
+  margin-top: 0.5rem;
   border-radius: 2px;
 }
 
@@ -56,7 +60,7 @@ body {
 
 .btn--primary {
   background: var(--color-primary);
-  color: #fff;
+  color: #0b0c0f;
 }
 
 .btn--primary:hover { background: var(--color-primary-hover); }
@@ -76,7 +80,17 @@ body {
   padding: 0.4rem 1rem;
   font-size: 0.85rem;
   background: var(--color-primary);
-  color: #fff;
+  color: #0b0c0f;
 }
 
 .btn--small:hover { background: var(--color-primary-hover); }
+
+/* --secondary wins when combined with --small (outline style, azure text). */
+.btn--secondary.btn--small {
+  background: transparent;
+  color: var(--color-primary);
+}
+.btn--secondary.btn--small:hover {
+  background: var(--color-primary);
+  color: #0b0c0f;
+}
