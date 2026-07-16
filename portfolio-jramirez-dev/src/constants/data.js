@@ -8,7 +8,7 @@ export const PERSONAL_INFO = {
   location: 'San Salvador, El Salvador',
   email: 'jhonalexramirez15@gmail.com',
   phone: '+503 7120-2704',
-  github: 'https://github.com/jramirez-dev',
+  github: 'https://github.com/jonalex97',
   linkedin: 'https://linkedin.com/in/jonathan-ramirez97',
   website: '',
   availableForWork: true,
@@ -82,12 +82,22 @@ export const EXPERIENCE = [
 export const PROJECTS = [
   {
     id: 1,
-    title: 'Próximamente...',
-    description: 'Estoy construyendo proyectos públicos que estarán disponibles aquí pronto.',
-    tech: ['.NET', 'React', 'SQL Server'],
-    github: '#',
-    demo: '#',
-    status: 'development',
+    title: 'NexaSuite',
+    tagline: 'ERP SaaS multiempresa',
+    description:
+      'ERP en la nube multi-tenant para PYMEs: control de accesos por roles y permisos, facturación con cobros, inventario con kardex, cotizaciones, reportes y notificaciones. Interfaz bilingüe español / inglés.',
+    tech: ['.NET 10', 'Clean Architecture', 'CQRS', 'PostgreSQL', 'Next.js', 'React', 'MUI', 'Docker'],
+    highlights: [
+      'Backend con Clean Architecture + CQRS/MediatR, multi-tenant y RBAC por permisos',
+      'Frontend Next.js con un motor CRUD dirigido por configuración (un módulo = un objeto)',
+      '35 pruebas, 0 warnings, CI/CD con GitHub Actions e interfaz bilingüe ES/EN',
+    ],
+    demo: 'https://nexasuite.vercel.app',
+    github: 'https://github.com/jonalex97/nexasuite',
+    architecture: 'https://claude.ai/code/artifact/88afc3de-3bb9-419e-b3f1-90d6d78605ff',
+    // Credenciales públicas del entorno de demostración (rol limitado, datos que se reinician a diario).
+    credentials: { email: 'demo@nexasuite.io', password: 'Demo1234$' },
+    status: 'demo',
     featured: true,
   },
 ];
@@ -96,11 +106,17 @@ export const PROJECTS = [
 export const APIS = [
   {
     id: 1,
-    title: 'Próximamente...',
-    description: 'APIs desarrolladas en proyectos empresariales. Los proyectos públicos estarán disponibles pronto.',
-    endpoints: ['GET /api/recurso', 'POST /api/recurso', 'PUT /api/recurso/:id'],
-    docs: '#',
-    status: 'beta',
+    title: 'NexaSuite API',
+    description:
+      'API REST del ERP NexaSuite: ~55 endpoints versionados, autenticación JWT con refresh, autorización por permisos y respuesta uniforme (ApiResponse). Documentada con Swagger/OpenAPI.',
+    endpoints: [
+      'POST /api/v1/auth/login',
+      'GET  /api/v1/invoices',
+      'POST /api/v1/invoices/{id}/issue',
+      'POST /api/v1/payments',
+    ],
+    docs: 'https://nexasuite-api-p263.onrender.com/swagger',
+    status: 'live',
   },
 ];
 

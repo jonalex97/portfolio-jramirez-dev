@@ -46,12 +46,12 @@
 
 .tech-badge {
   padding: 0.2rem 0.6rem;
-  background: rgba(124, 58, 237, 0.15);
-  border: 1px solid rgba(124, 58, 237, 0.3);
+  background: var(--color-elevated);
+  border: 1px solid var(--color-border);
   border-radius: 4px;
   font-size: 0.75rem;
   font-family: var(--font-mono);
-  color: var(--color-primary);
+  color: var(--color-muted);
 }
 
 .project-card__links {
@@ -68,3 +68,178 @@
 }
 
 .project-card__links a:hover { color: var(--color-text); }
+
+/* ─── Featured project (NexaSuite) ─────────────────────────────────────────── */
+.project-featured {
+  max-width: var(--max-width);
+  margin: 0 auto 2rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: calc(var(--radius) + 4px);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.project-featured__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.project-featured__badge {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.project-featured__title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-top: 0.35rem;
+  line-height: 1.25;
+}
+
+.project-featured__tagline {
+  color: var(--color-muted);
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.project-featured__live {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: #6ee7a8;
+  white-space: nowrap;
+  padding-top: 0.35rem;
+}
+
+.project-featured__desc {
+  color: var(--color-muted);
+  font-size: 0.94rem;
+  max-width: 64ch;
+}
+
+.project-featured__highlights {
+  list-style: none;
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+}
+
+.project-featured__highlights li {
+  position: relative;
+  padding-left: 1.1rem;
+  font-size: 0.88rem;
+  color: var(--color-text);
+}
+
+.project-featured__highlights li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 1px;
+  background: var(--color-primary);
+}
+
+/* ─── Demo credentials box ─────────────────────────────────────────────────── */
+.cred {
+  background: var(--color-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.cred__title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.cred__note {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  color: var(--color-muted);
+  font-weight: 400;
+}
+
+.cred__row {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr auto;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.cred__label {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+}
+
+.cred__value {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  padding: 0.3rem 0.55rem;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.cred__copy {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-primary);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  padding: 0.32rem 0.6rem;
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition);
+  white-space: nowrap;
+}
+
+.cred__copy:hover { border-color: var(--color-primary); }
+.cred__copy:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+
+/* ─── Featured actions ─────────────────────────────────────────────────────── */
+.project-featured__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.project-featured__ghlink {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.project-featured__ghlink:hover { color: var(--color-text); }
+
+@media (max-width: 520px) {
+  .cred__row { grid-template-columns: 3.5rem 1fr; }
+  .cred__copy { grid-column: 2; justify-self: start; }
+}
