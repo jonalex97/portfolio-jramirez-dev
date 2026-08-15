@@ -2,7 +2,7 @@
 
 Portfolio personal desarrollado con **React + Vite**, diseñado para presentar mi experiencia como Fullstack Developer .NET / C#, proyectos realizados y APIs construidas a lo largo de mi carrera.
 
-🌐 **Live:** https://jramirez-dev.github.io/portfolio-jramirez-dev
+🌐 **Live:** https://jonalex97.github.io/portfolio-jramirez-dev/
 
 ---
 
