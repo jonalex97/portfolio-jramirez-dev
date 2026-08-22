@@ -8,6 +8,9 @@ export const PERSONAL_INFO = {
   location: 'San Salvador, El Salvador',
   email: 'jhonalexramirez15@gmail.com',
   phone: '+503 7120-2704',
+  // Solo dígitos con código de país, formato wa.me. Parametrizable vía
+  // VITE_WHATSAPP (local: .env; producción: variable del repo en GitHub Actions).
+  whatsapp: import.meta.env.VITE_WHATSAPP || '50376297214',
   github: 'https://github.com/jonalex97',
   linkedin: 'https://linkedin.com/in/jonathan-ramirez97',
   website: '',
