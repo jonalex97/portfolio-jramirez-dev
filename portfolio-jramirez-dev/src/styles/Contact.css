@@ -72,6 +72,16 @@
   border-color: var(--color-primary);
 }
 
+/* Honeypot anti-bots: fuera de pantalla, no display:none para que los bots lo rellenen */
+.contact__form .contact__hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .contact__form-actions {
   display: flex;
   gap: 1rem;

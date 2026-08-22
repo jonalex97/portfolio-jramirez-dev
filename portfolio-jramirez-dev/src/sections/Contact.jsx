@@ -43,6 +43,16 @@ export default function Contact() {
             maxLength={150}
             required
           />
+          <input
+            type="text"
+            name="company"
+            className="contact__hp"
+            value={form.company}
+            onChange={handleChange}
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+          />
           <textarea
             name="message"
             placeholder="Mensaje"
@@ -54,6 +64,8 @@ export default function Contact() {
           />
           {status === 'success' && <p className="form-msg form-msg--success">¡Mensaje enviado! Te responderé pronto.</p>}
           {status === 'error' && <p className="form-msg form-msg--error">Por favor completa todos los campos.</p>}
+          {status === 'error-email' && <p className="form-msg form-msg--error">El correo no parece válido, revísalo.</p>}
+          {status === 'cooldown' && <p className="form-msg form-msg--error">Ya enviaste un mensaje hace poco; espera un momento o escríbeme por WhatsApp.</p>}
           {status === 'failed' && (
             <p className="form-msg form-msg--error">
               No se pudo enviar el correo. Intenta por WhatsApp o escríbeme directamente.
