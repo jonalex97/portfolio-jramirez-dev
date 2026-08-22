@@ -72,6 +72,24 @@
   border-color: var(--color-primary);
 }
 
+.contact__form-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn--whatsapp {
+  background: #25d366;
+  color: #0b1a10;
+}
+
+.btn--whatsapp:hover { background: #1fb959; }
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .form-msg { font-size: 0.9rem; padding: 0.5rem 0; }
 .form-msg--success { color: #4ade80; }
 .form-msg--error { color: #f87171; }

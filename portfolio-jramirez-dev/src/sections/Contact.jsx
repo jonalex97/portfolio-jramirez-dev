@@ -3,7 +3,7 @@ import { PERSONAL_INFO } from '../constants/data';
 import '../styles/Contact.css';
 
 export default function Contact() {
-  const { form, status, handleChange, handleSubmit } = useContactForm();
+  const { form, status, handleChange, handleSubmit, handleWhatsApp } = useContactForm();
 
   return (
     <section className="contact" id="contact">
@@ -15,6 +15,13 @@ export default function Contact() {
           <div className="contact__socials">
             <a href={PERSONAL_INFO.github} target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href={PERSONAL_INFO.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a
+              href={`https://wa.me/${PERSONAL_INFO.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp
+            </a>
           </div>
         </div>
         <form className="contact__form" onSubmit={handleSubmit} noValidate>
@@ -45,9 +52,21 @@ export default function Contact() {
             rows={5}
             required
           />
-          {status === 'success' && <p className="form-msg form-msg--success">¡Mensaje enviado!</p>}
+          {status === 'success' && <p className="form-msg form-msg--success">¡Mensaje enviado! Te responderé pronto.</p>}
           {status === 'error' && <p className="form-msg form-msg--error">Por favor completa todos los campos.</p>}
-          <button type="submit" className="btn btn--primary">Enviar</button>
+          {status === 'failed' && (
+            <p className="form-msg form-msg--error">
+              No se pudo enviar el correo. Intenta por WhatsApp o escríbeme directamente.
+            </p>
+          )}
+          <div className="contact__form-actions">
+            <button type="submit" className="btn btn--primary" disabled={status === 'sending'}>
+              {status === 'sending' ? 'Enviando…' : 'Enviar por correo'}
+            </button>
+            <button type="button" className="btn btn--whatsapp" onClick={handleWhatsApp}>
+              Enviar por WhatsApp
+            </button>
+          </div>
         </form>
       </div>
     </section>

@@ -35,6 +35,9 @@ jobs:
       - name: Build
         run: npm run build
         working-directory: portfolio-jramirez-dev
+        env:
+          VITE_FORMSPREE_ENDPOINT: ${{ vars.VITE_FORMSPREE_ENDPOINT }}
+          VITE_WHATSAPP: ${{ vars.VITE_WHATSAPP }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
