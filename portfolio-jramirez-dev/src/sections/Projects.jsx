@@ -124,19 +124,21 @@ export default function Projects() {
 
   return (
     <section className="projects" id="projects">
-      <h2 className="section__title">{t('projectsTitle')}</h2>
+      <div className="section__container">
+        <h2 className="section__title">{t('projectsTitle')}</h2>
 
-      {featured.map((project) => (
-        <FeaturedProject key={project.id} project={project} t={t} />
-      ))}
+        {featured.map((project) => (
+          <FeaturedProject key={project.id} project={project} t={t} />
+        ))}
 
-      {rest.length > 0 && (
-        <div className="projects__grid">
-          {rest.map((project) => (
-            <ProjectCard key={project.id} {...project} />
-          ))}
-        </div>
-      )}
+        {rest.length > 0 && (
+          <div className="projects__grid">
+            {rest.map((project) => (
+              <ProjectCard key={project.id} {...project} />
+            ))}
+          </div>
+        )}
+      </div>
     </section>
   );
 }

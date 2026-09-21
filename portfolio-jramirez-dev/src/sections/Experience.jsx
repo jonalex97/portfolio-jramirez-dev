@@ -29,39 +29,41 @@ export default function Experience() {
 
   return (
     <section className="experience" id="experience">
-      <h2 className="section__title">{t('experienceTitle')}</h2>
+      <div className="section__container">
+        <h2 className="section__title">{t('experienceTitle')}</h2>
 
-      {/* Consultoría y Proyectos Independientes */}
-      {consulting.length > 0 && (
-        <div className="experience__section">
-          <div className="experience__section-header">
-            <span className="experience__badge">{t('consultingBadge')}</span>
-            <h3 className="experience__section-title">{t('consultingTitle')}</h3>
-            <p className="experience__section-desc">{t('consultingSubtitle')}</p>
+        {/* Consultoría y Proyectos Independientes */}
+        {consulting.length > 0 && (
+          <div className="experience__section">
+            <div className="experience__section-header">
+              <span className="experience__badge">{t('consultingBadge')}</span>
+              <h3 className="experience__section-title">{t('consultingTitle')}</h3>
+              <p className="experience__section-desc">{t('consultingSubtitle')}</p>
+            </div>
+            <div className="experience__list">
+              {consulting.map((exp) => (
+                <ExperienceItem key={exp.id} {...exp} />
+              ))}
+            </div>
           </div>
-          <div className="experience__list">
-            {consulting.map((exp) => (
-              <ExperienceItem key={exp.id} {...exp} />
-            ))}
-          </div>
-        </div>
-      )}
+        )}
 
-      {/* Trayectoria Corporativa */}
-      {corporate.length > 0 && (
-        <div className="experience__section">
-          <div className="experience__section-header">
-            <span className="experience__badge">{t('corporateBadge')}</span>
-            <h3 className="experience__section-title">{t('corporateTitle')}</h3>
-            <p className="experience__section-desc">{t('corporateSubtitle')}</p>
+        {/* Trayectoria Corporativa */}
+        {corporate.length > 0 && (
+          <div className="experience__section">
+            <div className="experience__section-header">
+              <span className="experience__badge">{t('corporateBadge')}</span>
+              <h3 className="experience__section-title">{t('corporateTitle')}</h3>
+              <p className="experience__section-desc">{t('corporateSubtitle')}</p>
+            </div>
+            <div className="experience__list">
+              {corporate.map((exp) => (
+                <ExperienceItem key={exp.id} {...exp} />
+              ))}
+            </div>
           </div>
-          <div className="experience__list">
-            {corporate.map((exp) => (
-              <ExperienceItem key={exp.id} {...exp} />
-            ))}
-          </div>
-        </div>
-      )}
+        )}
+      </div>
     </section>
   );
 }

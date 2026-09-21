@@ -9,8 +9,9 @@ export default function Contact() {
 
   return (
     <section className="contact" id="contact">
-      <h2 className="section__title">{t('contactTitle')}</h2>
-      <div className="contact__wrapper">
+      <div className="section__container">
+        <h2 className="section__title">{t('contactTitle')}</h2>
+        <div className="contact__wrapper">
         <div className="contact__info">
           <p>{t('contactSubtitle')}</p>
           <a href={`mailto:${personalInfo.email}`}>{personalInfo.email}</a>
@@ -82,6 +83,7 @@ export default function Contact() {
             </button>
           </div>
         </form>
+        </div>
       </div>
     </section>
   );
