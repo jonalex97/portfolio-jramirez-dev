@@ -4,11 +4,107 @@
   margin: 0 auto;
 }
 
+.about__intro {
+  margin-bottom: 3.5rem;
+}
+
+.about__badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  background: rgba(122, 162, 247, 0.1);
+  border: 1px solid rgba(122, 162, 247, 0.25);
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.03em;
+}
+
+[data-theme="light"] .about__badge {
+  background: rgba(37, 99, 235, 0.08);
+  border-color: rgba(37, 99, 235, 0.25);
+  color: var(--color-primary);
+}
+
+.about__headline {
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.35;
+  margin-bottom: 1rem;
+  max-width: 850px;
+}
+
+.about__lead {
+  font-size: 1.05rem;
+  color: var(--color-muted);
+  line-height: 1.75;
+  max-width: 880px;
+  margin-bottom: 2rem;
+}
+
+.about__highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.75rem;
+}
+
+.about__highlight-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  position: relative;
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+
+.about__highlight-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-primary);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.about__highlight-num {
+  font-family: var(--font-mono);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  opacity: 0.85;
+  margin-bottom: 0.5rem;
+}
+
+.about__highlight-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.about__highlight-desc {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+.about__tech {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.about__tech-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+}
+
 .about__skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.5rem;
-  margin-bottom: 2.5rem;
 }
 
 .skill-group {

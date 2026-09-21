@@ -1,22 +1,24 @@
 import { useContactForm } from '../hooks/useContactForm';
-import { PERSONAL_INFO } from '../constants/data';
+import { useLanguage } from '../context/LanguageContext';
 import '../styles/Contact.css';
 
 export default function Contact() {
+  const { content, t } = useLanguage();
+  const { personalInfo } = content;
   const { form, status, handleChange, handleSubmit, handleWhatsApp } = useContactForm();
 
   return (
     <section className="contact" id="contact">
-      <h2 className="section__title">Contacto</h2>
+      <h2 className="section__title">{t('contactTitle')}</h2>
       <div className="contact__wrapper">
         <div className="contact__info">
-          <p>¿Tienes un proyecto en mente? ¡Hablemos!</p>
-          <a href={`mailto:${PERSONAL_INFO.email}`}>{PERSONAL_INFO.email}</a>
+          <p>{t('contactSubtitle')}</p>
+          <a href={`mailto:${personalInfo.email}`}>{personalInfo.email}</a>
           <div className="contact__socials">
-            <a href={PERSONAL_INFO.github} target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href={PERSONAL_INFO.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href={personalInfo.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a
-              href={`https://wa.me/${PERSONAL_INFO.whatsapp}`}
+              href={`https://wa.me/${personalInfo.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -28,7 +30,7 @@ export default function Contact() {
           <input
             type="text"
             name="name"
-            placeholder="Nombre"
+            placeholder={t('namePlaceholder')}
             value={form.name}
             onChange={handleChange}
             maxLength={100}
@@ -37,7 +39,7 @@ export default function Contact() {
           <input
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder={t('emailPlaceholder')}
             value={form.email}
             onChange={handleChange}
             maxLength={150}
@@ -55,28 +57,28 @@ export default function Contact() {
           />
           <textarea
             name="message"
-            placeholder="Mensaje"
+            placeholder={t('msgPlaceholder')}
             value={form.message}
             onChange={handleChange}
             maxLength={1000}
             rows={5}
             required
           />
-          {status === 'success' && <p className="form-msg form-msg--success">¡Mensaje enviado! Te responderé pronto.</p>}
-          {status === 'error' && <p className="form-msg form-msg--error">Por favor completa todos los campos.</p>}
-          {status === 'error-email' && <p className="form-msg form-msg--error">El correo no parece válido, revísalo.</p>}
-          {status === 'cooldown' && <p className="form-msg form-msg--error">Ya enviaste un mensaje hace poco; espera un momento o escríbeme por WhatsApp.</p>}
+          {status === 'success' && <p className="form-msg form-msg--success">{t('msgSuccess')}</p>}
+          {status === 'error' && <p className="form-msg form-msg--error">{t('msgError')}</p>}
+          {status === 'error-email' && <p className="form-msg form-msg--error">{t('msgErrorEmail')}</p>}
+          {status === 'cooldown' && <p className="form-msg form-msg--error">{t('msgCooldown')}</p>}
           {status === 'failed' && (
             <p className="form-msg form-msg--error">
-              No se pudo enviar el correo. Intenta por WhatsApp o escríbeme directamente.
+              {t('msgFailed')}
             </p>
           )}
           <div className="contact__form-actions">
             <button type="submit" className="btn btn--primary" disabled={status === 'sending'}>
-              {status === 'sending' ? 'Enviando…' : 'Enviar por correo'}
+              {status === 'sending' ? t('sendingBtn') : t('sendEmailBtn')}
             </button>
             <button type="button" className="btn btn--whatsapp" onClick={handleWhatsApp}>
-              Enviar por WhatsApp
+              {t('sendWhatsAppBtn')}
             </button>
           </div>
         </form>

@@ -8,9 +8,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background: rgba(10, 10, 15, 0.85);
+  background: var(--color-bg-nav);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border);
+  transition: background-color var(--transition), border-color var(--transition);
 }
 
 .navbar__logo {
@@ -19,6 +20,12 @@
   font-weight: 700;
   color: var(--color-primary);
   text-decoration: none;
+}
+
+.navbar__right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .navbar__links {
@@ -36,6 +43,73 @@
 
 .navbar__links a:hover { color: var(--color-text); }
 
-@media (max-width: 600px) {
-  .navbar__links { gap: 1rem; font-size: 0.85rem; }
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  background: var(--color-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 2px 5px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  gap: 3px;
+}
+
+.lang-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-muted);
+  cursor: pointer;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-family: inherit;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  transition: all var(--transition);
+}
+
+.lang-btn:hover {
+  color: var(--color-text);
+}
+
+.lang-btn--active {
+  background: var(--color-primary);
+  color: var(--btn-primary-text);
+}
+
+.lang-divider {
+  color: var(--color-border);
+  font-size: 0.75rem;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  width: 36px;
+  height: 36px;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all var(--transition);
+  padding: 0;
+}
+
+.theme-toggle:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .navbar { padding: 0.8rem 1rem; }
+  .navbar__right { gap: 0.8rem; }
+  .navbar__links { gap: 0.8rem; font-size: 0.85rem; }
+}
+
+@media (max-width: 580px) {
+  .navbar__links { display: none; }
 }

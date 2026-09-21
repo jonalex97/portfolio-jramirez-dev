@@ -1,4 +1,5 @@
 import { lazy, Suspense } from 'react';
+import { LanguageProvider } from './context/LanguageContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import './styles/globals.css';
@@ -12,7 +13,7 @@ const Contact    = lazy(() => import('./sections/Contact'));
 
 function App() {
   return (
-    <>
+    <LanguageProvider>
       <Navbar />
       <main>
         <Suspense fallback={null}>
@@ -25,7 +26,7 @@ function App() {
         </Suspense>
       </main>
       <Footer />
-    </>
+    </LanguageProvider>
   );
 }
 

@@ -1,4 +1,4 @@
-import { EXPERIENCE } from '../constants/data';
+import { useLanguage } from '../context/LanguageContext';
 import '../styles/Experience.css';
 
 function ExperienceItem({ company, role, period, location, description, achievements, tech }) {
@@ -23,14 +23,45 @@ function ExperienceItem({ company, role, period, location, description, achievem
 }
 
 export default function Experience() {
+  const { content, t } = useLanguage();
+  const consulting = content.experience.filter((exp) => exp.category === 'consulting');
+  const corporate = content.experience.filter((exp) => exp.category === 'corporate');
+
   return (
     <section className="experience" id="experience">
-      <h2 className="section__title">Experiencia</h2>
-      <div className="experience__list">
-        {EXPERIENCE.map((exp) => (
-          <ExperienceItem key={exp.id} {...exp} />
-        ))}
-      </div>
+      <h2 className="section__title">{t('experienceTitle')}</h2>
+
+      {/* Consultoría y Proyectos Independientes */}
+      {consulting.length > 0 && (
+        <div className="experience__section">
+          <div className="experience__section-header">
+            <span className="experience__badge">{t('consultingBadge')}</span>
+            <h3 className="experience__section-title">{t('consultingTitle')}</h3>
+            <p className="experience__section-desc">{t('consultingSubtitle')}</p>
+          </div>
+          <div className="experience__list">
+            {consulting.map((exp) => (
+              <ExperienceItem key={exp.id} {...exp} />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Trayectoria Corporativa */}
+      {corporate.length > 0 && (
+        <div className="experience__section">
+          <div className="experience__section-header">
+            <span className="experience__badge">{t('corporateBadge')}</span>
+            <h3 className="experience__section-title">{t('corporateTitle')}</h3>
+            <p className="experience__section-desc">{t('corporateSubtitle')}</p>
+          </div>
+          <div className="experience__list">
+            {corporate.map((exp) => (
+              <ExperienceItem key={exp.id} {...exp} />
+            ))}
+          </div>
+        </div>
+      )}
     </section>
   );
 }

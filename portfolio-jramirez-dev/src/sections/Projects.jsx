@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { PROJECTS } from '../constants/data';
+import { useLanguage } from '../context/LanguageContext';
 import '../styles/Projects.css';
 
-function CopyField({ label, value }) {
+function CopyField({ label, value, copyLabel, copiedLabel }) {
   const [copied, setCopied] = useState(false);
 
   const copy = async () => {
@@ -23,27 +23,27 @@ function CopyField({ label, value }) {
         type="button"
         className="cred__copy"
         onClick={copy}
-        aria-label={`Copiar ${label}`}
+        aria-label={`${copyLabel} ${label}`}
       >
-        {copied ? '✓ Copiado' : 'Copiar'}
+        {copied ? `✓ ${copiedLabel}` : copyLabel}
       </button>
     </div>
   );
 }
 
-function FeaturedProject({ project }) {
+function FeaturedProject({ project, t }) {
   const { title, tagline, description, tech, highlights, demo, github, credentials } = project;
 
   return (
     <article className="project-featured">
       <div className="project-featured__head">
         <div>
-          <span className="project-featured__badge">Proyecto destacado</span>
+          <span className="project-featured__badge">{t('featuredBadge')}</span>
           <h3 className="project-featured__title">
             {title} <span className="project-featured__tagline">— {tagline}</span>
           </h3>
         </div>
-        {credentials && <span className="project-featured__live">● Demo en vivo</span>}
+        {credentials && <span className="project-featured__live">● {t('liveDemo')}</span>}
       </div>
 
       <p className="project-featured__desc">{description}</p>
@@ -57,26 +57,36 @@ function FeaturedProject({ project }) {
       )}
 
       <div className="project-card__tech">
-        {tech.map((t) => (
-          <span key={t} className="tech-badge">{t}</span>
+        {tech.map((tItem) => (
+          <span key={tItem} className="tech-badge">{tItem}</span>
         ))}
       </div>
 
       {credentials && (
         <div className="cred">
           <div className="cred__title">
-            Acceso de demostración
-            <span className="cred__note">rol limitado · se reinicia a diario</span>
+            {t('demoCredentials')}
+            <span className="cred__note">{t('demoCredNote')}</span>
           </div>
-          <CopyField label="Correo" value={credentials.email} />
-          <CopyField label="Clave" value={credentials.password} />
+          <CopyField
+            label={t('emailLabel')}
+            value={credentials.email}
+            copyLabel={t('copy')}
+            copiedLabel={t('copied')}
+          />
+          <CopyField
+            label={t('passwordLabel')}
+            value={credentials.password}
+            copyLabel={t('copy')}
+            copiedLabel={t('copied')}
+          />
         </div>
       )}
 
       <div className="project-featured__actions">
         {demo && (
           <a className="btn btn--primary btn--small" href={demo} target="_blank" rel="noopener noreferrer">
-            Probar demo →
+            {t('tryDemo')}
           </a>
         )}
         {github && (
@@ -95,28 +105,29 @@ function ProjectCard({ title, description, tech, github, demo }) {
       <h3 className="project-card__title">{title}</h3>
       <p className="project-card__desc">{description}</p>
       <div className="project-card__tech">
-        {tech.map((t) => (
-          <span key={t} className="tech-badge">{t}</span>
+        {tech.map((tItem) => (
+          <span key={tItem} className="tech-badge">{tItem}</span>
         ))}
       </div>
       <div className="project-card__links">
-        <a href={github} target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href={demo} target="_blank" rel="noopener noreferrer">Demo</a>
+        {github && <a href={github} target="_blank" rel="noopener noreferrer">GitHub</a>}
+        {demo && <a href={demo} target="_blank" rel="noopener noreferrer">Demo</a>}
       </div>
     </article>
   );
 }
 
 export default function Projects() {
-  const featured = PROJECTS.filter((p) => p.featured);
-  const rest = PROJECTS.filter((p) => !p.featured);
+  const { content, t } = useLanguage();
+  const featured = content.projects.filter((p) => p.featured);
+  const rest = content.projects.filter((p) => !p.featured);
 
   return (
     <section className="projects" id="projects">
-      <h2 className="section__title">Proyectos</h2>
+      <h2 className="section__title">{t('projectsTitle')}</h2>
 
       {featured.map((project) => (
-        <FeaturedProject key={project.id} project={project} />
+        <FeaturedProject key={project.id} project={project} t={t} />
       ))}
 
       {rest.length > 0 && (

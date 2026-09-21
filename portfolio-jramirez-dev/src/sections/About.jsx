@@ -1,42 +1,58 @@
-import { SKILLS, LANGUAGES, SOFT_SKILLS } from '../constants/data';
+import { useLanguage } from '../hooks/useLanguage';
 import '../styles/About.css';
 
-const SKILL_LABELS = {
-  frontend:  'Frontend',
-  backend:   'Backend & Arquitectura',
-  databases: 'Bases de Datos',
-  devops:    'DevOps & Herramientas',
-};
-
 export default function About() {
+  const { content, t } = useLanguage();
+  const { aboutProfile, skills, skillsLabels, languages, softSkills } = content;
+
   return (
     <section className="about" id="about">
-      <h2 className="section__title">Habilidades</h2>
+      {aboutProfile && (
+        <div className="about__intro">
+          <div className="about__badge">Fullstack .NET & Software Engineering</div>
+          <h2 className="section__title">{aboutProfile.title || t('aboutTitle')}</h2>
+          <h3 className="about__headline">{aboutProfile.headline}</h3>
+          <p className="about__lead">{aboutProfile.lead}</p>
 
-      <div className="about__skills-grid">
-        {Object.entries(SKILLS).map(([category, items]) => (
-          <div key={category} className="skill-group">
-            <h3 className="skill-group__title">{SKILL_LABELS[category]}</h3>
-            <div className="skill-group__tags">
-              {items.map((skill) => (
-                <span key={skill} className="skill-tag">{skill}</span>
-              ))}
-            </div>
+          <div className="about__highlights-grid">
+            {aboutProfile.highlights.map((h, i) => (
+              <div key={i} className="about__highlight-card">
+                <div className="about__highlight-num">0{i + 1}</div>
+                <h4 className="about__highlight-title">{h.title}</h4>
+                <p className="about__highlight-desc">{h.desc}</p>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
+      )}
+
+      <div className="about__tech">
+        <h3 className="about__tech-title">{t('skillsTitle')}</h3>
+        <div className="about__skills-grid">
+          {Object.entries(skills).map(([category, items]) => (
+            <div key={category} className="skill-group">
+              <h4 className="skill-group__title">{skillsLabels[category] || category}</h4>
+              <div className="skill-group__tags">
+                {items.map((skill) => (
+                  <span key={skill} className="skill-tag">{skill}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="about__bottom">
         <div className="about__languages">
-          <h3 className="skill-group__title">Idiomas</h3>
-          {LANGUAGES.map(({ lang, level }) => (
+          <h4 className="skill-group__title">{t('languagesTitle')}</h4>
+          {languages.map(({ lang, level }) => (
             <p key={lang}><span>{lang}:</span> {level}</p>
           ))}
         </div>
         <div className="about__soft">
-          <h3 className="skill-group__title">Habilidades Blandas</h3>
+          <h4 className="skill-group__title">{t('softSkillsTitle')}</h4>
           <ul>
-            {SOFT_SKILLS.map((s) => <li key={s}>{s}</li>)}
+            {softSkills.map((s) => <li key={s}>{s}</li>)}
           </ul>
         </div>
       </div>
