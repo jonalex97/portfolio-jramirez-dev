@@ -1,7 +1,7 @@
-import { APIS } from '../constants/data';
+import { useLanguage } from '../context/LanguageContext';
 import '../styles/Apis.css';
 
-function ApiCard({ title, description, endpoints, docs }) {
+function ApiCard({ title, description, endpoints, docs, docsBtn }) {
   return (
     <article className="api-card">
       <h3 className="api-card__title">{title}</h3>
@@ -11,20 +11,24 @@ function ApiCard({ title, description, endpoints, docs }) {
           <li key={ep}><code>{ep}</code></li>
         ))}
       </ul>
-      <a href={docs} target="_blank" rel="noopener noreferrer" className="btn btn--small">
-        Documentación
-      </a>
+      {docs && (
+        <a href={docs} target="_blank" rel="noopener noreferrer" className="btn btn--small">
+          {docsBtn}
+        </a>
+      )}
     </article>
   );
 }
 
 export default function Apis() {
+  const { content, t } = useLanguage();
+
   return (
     <section className="apis" id="apis">
-      <h2 className="section__title">APIs Desarrolladas</h2>
+      <h2 className="section__title">{t('apisTitle')}</h2>
       <div className="apis__grid">
-        {APIS.map((api) => (
-          <ApiCard key={api.id} {...api} />
+        {content.apis.map((api) => (
+          <ApiCard key={api.id} {...api} docsBtn={t('docsBtn')} />
         ))}
       </div>
     </section>

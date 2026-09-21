@@ -5,7 +5,7 @@
   justify-content: center;
   padding: 8rem 2rem 4rem;
   text-align: center;
-  background: radial-gradient(ellipse at top, #1a0a2e 0%, var(--color-bg) 70%);
+  background: var(--hero-bg-gradient);
 }
 
 .hero__content { max-width: 700px; }
@@ -23,7 +23,7 @@
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, #fff 40%, var(--color-primary));
+  background: var(--hero-name-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

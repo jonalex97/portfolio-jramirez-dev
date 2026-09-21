@@ -1,17 +1,20 @@
-import { PERSONAL_INFO } from '../constants/data';
+import { useLanguage } from '../context/LanguageContext';
 import '../styles/Hero.css';
 
 export default function Hero() {
+  const { content, t } = useLanguage();
+  const { personalInfo } = content;
+
   return (
     <section className="hero" id="hero">
       <div className="hero__content">
-        <p className="hero__greeting">Hola, soy</p>
-        <h1 className="hero__name">{PERSONAL_INFO.name}</h1>
-        <h2 className="hero__title">{PERSONAL_INFO.subtitle}</h2>
-        <p className="hero__description">{PERSONAL_INFO.description}</p>
+        <p className="hero__greeting">{t('heroGreeting')}</p>
+        <h1 className="hero__name">{personalInfo.name}</h1>
+        <h2 className="hero__title">{personalInfo.subtitle}</h2>
+        <p className="hero__description">{personalInfo.description}</p>
         <div className="hero__cta">
-          <a href="#projects" className="btn btn--primary">Ver Proyectos</a>
-          <a href="#contact" className="btn btn--secondary">Contactar</a>
+          <a href="#projects" className="btn btn--primary">{t('viewProjects')}</a>
+          <a href="#contact" className="btn btn--secondary">{t('contact')}</a>
         </div>
       </div>
     </section>
