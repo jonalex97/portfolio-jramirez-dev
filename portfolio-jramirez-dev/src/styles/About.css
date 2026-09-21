@@ -5,42 +5,23 @@
 }
 
 .about__intro {
+  margin-top: 1rem;
   margin-bottom: 3.5rem;
 }
 
-.about__badge {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--color-primary);
-  background: rgba(122, 162, 247, 0.1);
-  border: 1px solid rgba(122, 162, 247, 0.25);
-  padding: 0.3rem 0.85rem;
-  border-radius: 999px;
-  margin-bottom: 1.25rem;
-  letter-spacing: 0.03em;
-}
-
-[data-theme="light"] .about__badge {
-  background: rgba(37, 99, 235, 0.08);
-  border-color: rgba(37, 99, 235, 0.25);
-  color: var(--color-primary);
-}
-
 .about__headline {
-  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  font-size: clamp(1.25rem, 2.3vw, 1.65rem);
   font-weight: 700;
   color: var(--color-text);
-  line-height: 1.35;
+  line-height: 1.4;
   margin-bottom: 1rem;
   max-width: 850px;
 }
 
 .about__lead {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--color-muted);
-  line-height: 1.75;
+  line-height: 1.7;
   max-width: 880px;
   margin-bottom: 2rem;
 }

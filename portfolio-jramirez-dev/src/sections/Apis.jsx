@@ -25,11 +25,13 @@ export default function Apis() {
 
   return (
     <section className="apis" id="apis">
-      <h2 className="section__title">{t('apisTitle')}</h2>
-      <div className="apis__grid">
-        {content.apis.map((api) => (
-          <ApiCard key={api.id} {...api} docsBtn={t('docsBtn')} />
-        ))}
+      <div className="section__container">
+        <h2 className="section__title">{t('apisTitle')}</h2>
+        <div className="apis__grid">
+          {content.apis.map((api) => (
+            <ApiCard key={api.id} {...api} docsBtn={t('docsBtn')} />
+          ))}
+        </div>
       </div>
     </section>
   );

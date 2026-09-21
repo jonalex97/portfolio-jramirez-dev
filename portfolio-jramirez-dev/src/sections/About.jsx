@@ -7,10 +7,10 @@ export default function About() {
 
   return (
     <section className="about" id="about">
+      <h2 className="section__title">{t('aboutTitle')}</h2>
+
       {aboutProfile && (
         <div className="about__intro">
-          <div className="about__badge">Fullstack .NET & Software Engineering</div>
-          <h2 className="section__title">{aboutProfile.title || t('aboutTitle')}</h2>
           <h3 className="about__headline">{aboutProfile.headline}</h3>
           <p className="about__lead">{aboutProfile.lead}</p>
 
